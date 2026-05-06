@@ -1,0 +1,20 @@
+[package]
+name = "Ush"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rand = "0.10.1"
+axum = "0.8.9"
+tokio = { version = "1.52.1", features = ["macros", "rt-multi-thread"] }
+serde = { version = "1.0.228", features = ["derive"] }
+async-rusqlite = "0.5.0"
+once_cell = "1.21.4"
+tower_governor = "0.8.0"
+tower-cookies = { version = "0.11.0", features = ["signed"] }
+tera = "1.20.1"
+tower = "0.5.3"
+tower-http = { version = "0.6.8", features = ["fs"] }
+
+bcrypt = "0.19.0"
+cookie = { version="0.18.1", features = ["signed", "private"] }

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Ush — Url Shortener</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/static/icons/ush512.png">
+
+<link rel="stylesheet" href="/static/css/main.css">
+
+</head>
+
+	<body>
+        <div style="width: 100%; padding: 1rem; margin-top: 5vh; max-width: 700px; justify-content: start;">
+
+            <div style="flex-direction: row; align-self: start;">
+                <div style="width: 3.5rem; aspect-ratio: 1/1;">
+                    <img id="main-icon" src="/static/icons/ush512.png" style="height: 100%;">
+                </div>
+
+                <h1>USh</h1>
+            </div>
+            <div>
+                <h2>Just simple URL shortener without registration</h2>
+            </div>
+
+            <div style="flex-direction: row; width: 100%; gap: 0.75rem;">
+		        <input id="input" placeholder="https://example.com/" type="text">
+                <button id="shorten0">Shorten</button>
+                <button id="shorten1" style="aspect-ratio: 1/1; background-size: 70%;" class="link-icon"><pre style="margin: 0;"> </pre></button>
+            </div>
+            <div class="status-container">
+                <p id="status-text"></p>
+            </div>
+
+            <div class="result-container">
+                <div style="width: 75%; gap: 1rem; align-items: start;">
+                    <div style="flex-direction: row; padding: 0.25rem; gap: 0.5rem; width: 100%; justify-content: start;">
+                        <div style="width: 2rem; aspect-ratio: 1/1;" class="link-icon"></div>
+
+                        <p id="link" style="width: 80%; text-decoration: underline; cursor: pointer; margin: 0.25rem;"></p>
+                    </div>
+
+                    <div style="flex-direction: row; padding: 0.25rem; gap: 0.5rem">
+                        <button style="padding: 0.25rem 1rem">Copy</button>
+                        <button style="padding: 0.25rem 1rem" id="edit-qr"><pre style="margin: 0;"></pre></button>
+                        <button style="padding: 0.25rem 1rem" id="download-qr"><pre style="margin: 0;"></pre></button>
+                    </div>
+                </div>
+                <div style="width: 100px; aspect-ratio: 1/1;overflow: hidden; opacity: 1; transition: opacity 0.5s ease;" id="qrcode"></div>
+            </div>
+
+            <div class="edit-qr-container">
+                <div style="width: 100%; align-items: start; flex-direction: row;">
+                    <div style=" align-items: start; padding: 1rem;">
+
+                        <div style="width: 100%; flex-direction: row;">
+                            <p style="text-align: center; margin-top: 0.15rem; margin-bottom: 0.15rem;">Colors</p>
+                        </div>
+
+                        <div style="width: 100%; flex-direction: row;">
+                            <p style="min-width: 3rem; text-align: center;">Main</p>
+                            <input id="main-color" type="color" value="#000000">
+                            <div class="color-input-wrapper">
+                                <span>#</span>
+                                <input type="text" class="color" maxlength="6" value="000000">
+                            </div>
+                        </div>
+
+                        <div style="width: 100%; flex-direction: row;">
+                            <p style="min-width: 3rem; text-align: center;">BG</p>
+                            <input id="bg-color" type="color" value="#ffffff">
+                            <div class="color-input-wrapper">
+                                <span>#</span>
+                                <input type="text" class="color" maxlength="6" value="ffffff">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style=" align-items: start; padding: 1rem;">
+
+                        <div style="width: 100%; flex-direction: row;">
+                            <p style="text-align: center;  margin-top: 0.15rem; margin-bottom: 0.15rem">Image</p>
+                        </div>
+
+                        <div style="align-items: start; padding: 1rem; width: 100%; height: 100%;">
+                            <div id="drop-zone" class="drop-zone">
+                                <span class="drop-zone__prompt"></span>
+                                <input type="file" id="file-input" class="drop-zone__input" accept="image/png, image/jpeg, image/webp">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="btn-cont">
+                    <button style="padding: 0.15rem 5rem;" onclick="updateCode()">Apply</button>
+                    <button style="padding: 0.15rem 5rem;" onclick="resetQR()">Reset</button>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div style="width: 70%; border-top: 0.125rem solid black">
+            <p>USh 0.1-rc1</p>
+
+        </div>
+
+        <div id="dl-menu">
+            <div class="download-menu open">
+                <div><p style="text-align: center; margin: 0;">Download</p></div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem">
+                    <button id="webp-download-button">WEBP</button>
+                    <button id="png-download-button">PNG</button>
+                    <button id="jpeg-download-button">JPEG</button>
+                </div>
+            </div>
+            <div id="download-menu-bg" style="position: fixed; top: 0; width: 100vw; height: 100vh; z-index: -1"></div>
+        </div>
+	</body>
+
+    <script defer src="/static/js/main.js"></script>
+    <script defer src="/static/js/dlqr.js"></script>
+    <script defer src="/static/js/init.js"></script>
+
+
+</html>

@@ -1,0 +1,54 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login</title>
+  <link rel="stylesheet" href="/static/css/login.css">
+  <link rel="icon" href="/static/icons/ush512.png">
+
+</head>
+
+<body>
+  <div class="main">
+    <p class="sign">Login</p>
+    <div class="form1">
+      <input id="login" class="un " type="text" placeholder="Login">
+      <input id="password" class="un" type="text" placeholder="Password">
+      <button class="submit" onclick="post()">Submit</button>
+    </div>
+
+  </div>
+</body>
+
+<script>
+     const urlParams = new URLSearchParams(window.location.search);
+
+        let next = urlParams.get("next");
+        if (next === null || next === undefined){
+            next = ""
+        }
+   function post(){
+        
+        let login_input  = document.getElementById("login")
+        let interval_input  = document.getElementById("password")
+    
+        let data = {"login": login_input.value, "password": interval_input.value}
+let b = JSON.stringify(data)
+        fetch("/-/api/login",{
+            headers: {  
+                'Content-Type': 'application/json'
+            },
+			method:"POST",
+			body: JSON.stringify(data),
+		})
+		.then(function(response){
+			if (response.ok){
+                window.location.href = window.location.origin
+            }
+		})
+		
+    }
+
+</script>
+
+</html>

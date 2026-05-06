@@ -1,0 +1,90 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 0.75rem;
+    margin: 0;
+    background-color: #fff;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 400px;
+
+    padding: 1rem;
+    border: 0.125rem black solid;
+    border-radius: 1rem;
+}
+
+.form1 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.sign {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #000;
+}
+
+.un {
+    padding: 1rem 1.5rem;
+    border-radius: 1.25rem;
+    font-size: 1.2rem;
+    width: 100%;
+    border: 0.125rem solid black;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.un:focus {
+    border-color: #535353;
+}
+
+.submit {
+    background: transparent;
+    padding: 1rem 1.5rem;
+    border-radius: 1.25rem;
+    font-size: 1.2rem;
+    border: 0.125rem solid black;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.2s ease, color 0.2s ease, border 0.2s ease;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.submit:hover {
+    background-color: rgba(0, 0, 0, 0.082);
+}
+
+.submit:active {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+@media (max-width: 450px) {
+    .main {
+        width: 95%;
+    }
+
+    .un, .submit {
+        font-size: 1.1rem;
+        padding: 0.8rem 1.2rem;
+    }
+}
