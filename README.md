@@ -10,3 +10,6 @@
 * No role system
 * No TLS (use a reverse proxy like Nginx / Caddy)
 * No user registration
+
+
+### Example at ush.cloudpub.ru (available from 16:00 to 22:00 every day)
