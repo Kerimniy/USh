@@ -60,6 +60,7 @@ use once_cell::sync::Lazy;
 
 use cookie::{Key, SameSite};
 use rand::random;
+use rusqlite::fallible_iterator::FallibleIterator;
 use crate::db::exequte;
 
 
@@ -325,9 +326,20 @@ async fn execute_command(Extension(state):Extension<Arc<AppState>>,cookies: Cook
 
 }
 
+async fn not_found_handler() -> impl IntoResponse {
+    let tera = get_tera().await;
+
+    let context = Context::new();
+    match tera.render("404.html", &context){
+        Ok(r)=>{return (StatusCode::NOT_FOUND,Html(r)).into_response()},
+        Err(_)=>{return (StatusCode::INTERNAL_SERVER_ERROR).into_response()}
+    };
+}
 
 #[tokio::main]
 async fn main() {
+
+    db::init_db().await;
 
 
     let admin_exist = db::is_user_exists().await.unwrap();
@@ -346,8 +358,10 @@ async fn main() {
         .route("/-/create/", post(gen_link_handle)).layer(GovernorLayer::new(governor_conf))
         .route("/", get(render_index))
         .route("/-/reg/", get(render_reg))
+        .route("/-/reg", get(render_reg))
         .route("/-/debug/", get(render_debug))
         .route("/-/login/", get(render_login))
+        .route("/-/login", get(render_login))
         .route("/-/logout/", get(logout))
         .route("/-/logout", get(logout))
         .route("/-/api/reg", post(reg))
@@ -356,7 +370,8 @@ async fn main() {
         .route("/{link}", get(resolve_link))
         .nest_service("/static", ServeDir::new("static"))
         .layer(Extension(state))
-        .layer(CookieManagerLayer::new());
+        .layer(CookieManagerLayer::new())
+        .fallback(not_found_handler);
 
     let host = HOST.clone();
     println!("Starting server on {}", &host);

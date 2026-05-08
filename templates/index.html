@@ -12,23 +12,25 @@
 </head>
 
 	<body>
-        <div style="width: 100%; padding: 1rem; margin-top: 5vh; max-width: 700px; justify-content: start;">
+        <div style="width: 100%; padding: 1rem;; max-width: 700px; justify-content: start;">
 
-            <div style="flex-direction: row; align-self: start;">
-                <div style="width: 3.5rem; aspect-ratio: 1/1;">
-                    <img id="main-icon" src="/static/icons/ush512.png" style="height: 100%;">
+            <div style="width: 100%;padding: 1rem;background-color: var(--panel-bg);border-radius: 1.5rem;border: 0.125rem var(--border-color) solid;box-shadow: 0 4px 30px var(--shadow-color);">
+                <div style="flex-direction: row; align-self: start;">
+                    <div style="width: 3.5rem; aspect-ratio: 1/1;">
+                        <img id="main-icon" src="/static/icons/ush512.png" style="height: 100%;">
+                    </div>
+
+                    <h1>USh</h1>
+                </div>
+                <div>
+                    <h2>Just a simple URL shortener without registration</h2>
                 </div>
 
-                <h1>USh</h1>
-            </div>
-            <div>
-                <h2>Just simple URL shortener without registration</h2>
-            </div>
-
-            <div style="flex-direction: row; width: 100%; gap: 0.75rem;">
-		        <input id="input" placeholder="https://example.com/" type="text">
-                <button id="shorten0">Shorten</button>
-                <button id="shorten1" style="aspect-ratio: 1/1; background-size: 70%;" class="link-icon"><pre style="margin: 0;"> </pre></button>
+                <div style="flex-direction: row; width: 100%; gap: 0.75rem;">
+                    <input id="input" placeholder="https://example.com/very-long-url/" type="text">
+                    <button id="shorten0">Shorten</button>
+                    <button id="shorten1" style="aspect-ratio: 1/1; background-size: 70%;" class="link-icon"><pre style="margin: 0;"> </pre></button>
+                </div>
             </div>
             <div class="status-container">
                 <p id="status-text"></p>
@@ -50,7 +52,7 @@
                 </div>
                 <div style="width: 100px; aspect-ratio: 1/1;overflow: hidden; opacity: 1; transition: opacity 0.5s ease;" id="qrcode"></div>
             </div>
-
+            <div></div>
             <div class="edit-qr-container">
                 <div style="width: 100%; align-items: start; flex-direction: row;">
                     <div style=" align-items: start; padding: 1rem;">
@@ -102,10 +104,9 @@
 
         </div>
 
-        <div style="width: 70%; border-top: 0.125rem solid black">
-            <p>USh 0.1-rc1</p>
-
-        </div>
+        <footer>
+            <p style="text-align: center; margin: 0.35em;">USh 0.1-rc2</p>
+        </footer>
 
         <div id="dl-menu">
             <div class="download-menu open">
@@ -119,7 +120,6 @@
             <div id="download-menu-bg" style="position: fixed; top: 0; width: 100vw; height: 100vh; z-index: -1"></div>
         </div>
 	</body>
-
     <script defer src="/static/js/main.js"></script>
     <script defer src="/static/js/dlqr.js"></script>
     <script defer src="/static/js/init.js"></script>
